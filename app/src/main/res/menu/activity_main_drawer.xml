@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_caixa"
+            android:icon="@drawable/ic_registrar_venda"
+            android:title="Registrar Venda" />
+        <item
+            android:id="@+id/nav_produto"
+            android:icon="@drawable/ic_local_shipping_black_24dp"
+            android:title="Estoque" />
+        <item
+            android:id="@+id/nav_despesa"
+            android:icon="@drawable/ic_despesa_24dp"
+            android:title="Despesa" />
+        <item
+            android:id="@+id/nav_venda"
+            android:icon="@drawable/ic_vendas"
+            android:title="Venda" />
+        <item
+            android:id="@+id/nav_resumo"
+            android:icon="@drawable/ic_equalizer_black_24dp"
+            android:title="Resumo" />
+
+    </group>
+
+</menu>

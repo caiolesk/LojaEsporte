@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "875576214899",
+    "firebase_url": "https://loja-esporte.firebaseio.com",
+    "project_id": "loja-esporte",
+    "storage_bucket": "loja-esporte.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875576214899:android:5c48c942876370c3",
+        "android_client_info": {
+          "package_name": "com.example.lojaesporte.lojaesporte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875576214899-77dm0fob8tjakogr8vmiup9hn4196sdu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lojaesporte.lojaesporte",
+            "certificate_hash": "ab1c530fed7e42ec3787d1d4182380bef3f9a114"
+          }
+        },
+        {
+          "client_id": "875576214899-84vnl3a10hp1be8ml6nv35h3raa40adm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkhk6ZM3h8Ohj9nJ1coMDkFz9ezwo2U1M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875576214899-84vnl3a10hp1be8ml6nv35h3raa40adm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

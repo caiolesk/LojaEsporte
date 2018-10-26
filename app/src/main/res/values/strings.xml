@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Loja Esporte</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="menu_voltar">Voltar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="editar_produto_text">Editar Produto</string>
+    <string name="btn_editar">Salvar</string>
+    <string name="title_activity_caixa">CaixaActivity</string>
+    <string name="avancar_menu">Avançar</string>
+    <string name="selecionar_produto_label">Selecionar Produto</string>
+    <string name="desc_produto">Descrição</string>
+    <string name="cat_produto">Categoria</string>
+    <string name="qtd_produto">Quantidade</string>
+    <string name="preco_produto">Preço</string>
+    <string name="cliente_venda_txt">Cliente</string>
+    <string name="data_venda_txt">Data</string>
+    <string name="total_venda_txt">Valor Total</string>
+    <string name="form_pagamento_venda_txt">Forma pagamento</string>
+    <string name="desconto_vneda_txt">Desconto %</string>
+    <string name="text_desconto_venda">Desconto %</string>
+    <string name="text_finalizar_venda">Finalizar</string>
+    <string name="text_data">Data</string>
+    <string name="text_btnCadastrar">Cadastrar</string>
+    <string name="text_valor">Valor</string>
+
+    <string-array name="formas_pagamento_array">
+        <item></item>
+        <item>Dinheiro</item>
+        <item>Crédito</item>
+        <item>Débito</item>
+        <item>Cheque</item>
+    </string-array>
+
+    <string-array name="formas_procurar_resumo_array">
+        <item>Vendas</item>
+    </string-array>
+
+    <string-array name="meses_array">
+        <item>Jan</item>
+        <item>Fev</item>
+        <item>Mar</item>
+        <item>Abr</item>
+        <item>Mai</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Ago</item>
+        <item>Set</item>
+        <item>Out</item>
+        <item>Nov</item>
+        <item>Dez</item>
+    </string-array>
+
+    <string name="title_activity_resumo">ResumoActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

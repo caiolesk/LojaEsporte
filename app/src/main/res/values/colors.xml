@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03a9f4</color>
+    <color name="colorPrimaryDark">#0288d1</color>
+    <color name="colorAccent">#26c6da</color>
+    <color name="colorCinza">#acaeaf</color>
+    <color name="foreground_material_light">#ffffff</color>
+    <color name="transparente_seletor">#00000000</color>
+    <color name="seletor_color">#7CF1FF</color>
+
+    <drawable name="transparentee">#0000</drawable>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lojaesporte.lojaesporte">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.EstoqueActivity"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.EditarProdutoActivity"
+            android:parentActivityName=".activity.EstoqueActivity" />
+        <activity
+            android:name=".activity.CaixaActivity"
+            android:label="@string/title_activity_caixa"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.ListaProdutosActivity"
+            android:parentActivityName=".activity.CaixaActivity" />
+        <activity
+            android:name=".activity.FinalizaSelecaoProdutoActivity"
+            android:parentActivityName=".activity.ListaProdutosActivity" />
+        <activity
+            android:name=".activity.DespesaActivity"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.ListaVendaActivity"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.VendaActivity"
+            android:parentActivityName=".activity.ListaVendaActivity" />
+        <activity
+            android:name=".activity.ResumoActivity"
+            android:label="@string/title_activity_resumo"
+            android:parentActivityName=".activity.MainActivity"></activity>
+    </application>
+
+</manifest>

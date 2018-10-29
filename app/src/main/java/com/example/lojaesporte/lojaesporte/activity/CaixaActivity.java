@@ -147,8 +147,11 @@ public class CaixaActivity extends AppCompatActivity {
                     if(params != null){
                         produto = (ProdutoVenda) params.getSerializable("produtoSelecionadoCarrinho");
                         adicionaProdutoCarrinho(produto);
-                        atribuiValorTotal(produto,Double.valueOf(textValorTotal.getText().toString()));
-
+                        if(textValorTotal.getText().toString().isEmpty()){
+                            atribuiValorTotal(produto,Double.valueOf(0));
+                        }else {
+                            atribuiValorTotal(produto, Double.valueOf(textValorTotal.getText().toString()));
+                        }
                     }
                 }
             }
@@ -183,7 +186,12 @@ public class CaixaActivity extends AppCompatActivity {
         venda.setNomeCliente(textCliente.getText().toString());
         venda.setData(textData.getText().toString());
         venda.setFormaPagamento(spinner.getSelectedItem().toString());
-        venda.setValorTotal(Double.valueOf(textValorTotal.getText().toString()));
+        if(!textValorTotal.getText().toString().isEmpty()){
+            venda.setValorTotal(Double.valueOf(textValorTotal.getText().toString()));
+        }else {
+            venda.setValorTotal(null);
+            Toast.makeText(getApplicationContext(),"Valor total não pode estar vazio",Toast.LENGTH_SHORT);
+        }
 
             if (vendaService.camposValidos(venda)) {
                 if (vendaService.validaCarrinho(produtosVenda)) {

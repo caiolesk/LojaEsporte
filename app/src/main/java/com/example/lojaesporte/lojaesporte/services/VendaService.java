@@ -35,7 +35,7 @@ public class VendaService {
         if ((venda.getFormaPagamento().equals(""))) {
             return false;
         }
-        if ((venda.getValorTotal().equals(""))) {
+        if ((venda.getValorTotal() == null)) {
             return false;
         }
         return true;

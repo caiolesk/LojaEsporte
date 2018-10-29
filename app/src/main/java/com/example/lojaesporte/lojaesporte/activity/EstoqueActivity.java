@@ -56,50 +56,11 @@ public class EstoqueActivity extends AppCompatActivity {
 
 
         searchView = findViewById(R.id.materialSearchPrincipal);
-        /*
-        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-            @Override
-            public void onSearchViewShown() {
 
-            }
-
-            @Override
-            public void onSearchViewClosed() {
-                ListaProdutoFragment fragment = (ListaProdutoFragment) adapter.getItem(1);
-                fragment.recarregarProdutos();
-            }
-        });
-
-        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                ListaProdutoFragment fragment = (ListaProdutoFragment) adapter.getItem(1);
-                if(newText != null && !newText.isEmpty()){
-                    fragment.pesquisarConversas(newText.toLowerCase());
-                }
-
-                return true;
-            }
-        });
-        */
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        /*
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_lista_produtos, menu);
-        */
-/*
-        MenuItem item = menu.findItem(R.id.menuPesquisar);
-        searchView.setMenuItem(item);
-*/
 
         return super.onCreateOptionsMenu(menu);
     }

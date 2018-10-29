@@ -94,15 +94,9 @@ public class ListaProdutoFragment extends Fragment {
 
                     produtoSelecionado = listaProdutosBusca.get(position);
                     posicao = position;
-                    //cardView.setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    // recyclerView.
-                   // Toast.makeText(getActivity(),produtoSelecionado.getDescricao(),Toast.LENGTH_SHORT).show();
                 }else {
                     produtoSelecionado = produtos.get(position);
                     posicao = position;
-                    //cardView.setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    // recyclerView.
-                   // Toast.makeText(getActivity(),produtoSelecionado.getDescricao(),Toast.LENGTH_SHORT).show();
 
                 }
             }

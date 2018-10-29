@@ -38,13 +38,7 @@ public class VendaDAO {
     }
 
     public double calculaPrecoDesconto(BigDecimal preco, BigDecimal desconto){
-        //return preco - (preco * (desconto / 100));
-       /* DecimalFormat df = new DecimalFormat("0.00");
-        return Double.valueOf(df.format(preco - (preco * (desconto / 100))));
-        */
-       System.out.println(preco);
        preco = preco.subtract(preco.multiply(desconto.divide(new BigDecimal(100)))).setScale(2, RoundingMode.HALF_UP);
-       System.out.println(preco);
 
        return preco.doubleValue();
     }

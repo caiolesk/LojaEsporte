@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.lojaesporte.lojaesporte.R;
+import com.example.lojaesporte.lojaesporte.helper.InternetCheck;
+import com.example.lojaesporte.lojaesporte.helper.Utils;
 import com.example.lojaesporte.lojaesporte.services.ProdutoService;
 import com.example.lojaesporte.lojaesporte.config.ConfiguracaoFirebase;
 import com.example.lojaesporte.lojaesporte.model.Produto;
@@ -23,6 +25,7 @@ public class NovoProdutoFragment extends Fragment {
     private Button btnCadastrar;
     private EditText textDescricao,textCategoria,textQuantidade,textPreco;
     private DatabaseReference firebase = ConfiguracaoFirebase.getFirebaseDatabase();
+    private Utils utils = new Utils();
     public NovoProdutoFragment() {
         // Required empty public constructor
     }
@@ -43,16 +46,21 @@ public class NovoProdutoFragment extends Fragment {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Produto produto = new Produto();
-                ProdutoService produtoService = new ProdutoService();
-                atribuiCampos(produto);
 
-                if(produtoService.camposValidos(produto)){
-                    produtoService.inserir(produto);
-                    limpaCampos(produto);
-                    Toast.makeText(getContext(),"Produto cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+                if(utils.verificaConexao(getActivity())){
+                    Produto produto = new Produto();
+                    ProdutoService produtoService = new ProdutoService();
+                    atribuiCampos(produto);
+
+                    if(produtoService.camposValidos(produto)){
+                        produtoService.inserir(produto);
+                        limpaCampos(produto);
+                        Toast.makeText(getContext(),"Produto cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getContext(),"Preencher todos os campo!",Toast.LENGTH_SHORT).show();
+                    }
                 }else {
-                    Toast.makeText(getContext(),"Preencher todos os campo!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Sem conexão com a internet!",Toast.LENGTH_SHORT).show();
                 }
 
             }

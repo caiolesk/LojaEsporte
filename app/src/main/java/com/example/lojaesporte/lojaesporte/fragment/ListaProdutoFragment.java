@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.lojaesporte.lojaesporte.DAO.ProdutoDAO;
 import com.example.lojaesporte.lojaesporte.R;
+import com.example.lojaesporte.lojaesporte.helper.Utils;
 import com.example.lojaesporte.lojaesporte.services.ProdutoService;
 import com.example.lojaesporte.lojaesporte.activity.EditarProdutoActivity;
 import com.example.lojaesporte.lojaesporte.adapter.AdapterProduto;
@@ -55,6 +58,7 @@ public class ListaProdutoFragment extends Fragment {
     private Context context;
     private MaterialSearchView searchView;
     private List<Produto> listaProdutosBusca = new ArrayList<>();
+    private Utils utils = new Utils();
     public ListaProdutoFragment() {
         // Required empty public constructor
     }
@@ -62,6 +66,7 @@ public class ListaProdutoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lista_produto, container, false);
 
@@ -135,7 +140,6 @@ public class ListaProdutoFragment extends Fragment {
             }
         });
 
-
         return view;
     }
 
@@ -149,6 +153,7 @@ public class ListaProdutoFragment extends Fragment {
     @Override
     public void onStart() {
         recuperarProdutos();
+
         super.onStart();
 
     }

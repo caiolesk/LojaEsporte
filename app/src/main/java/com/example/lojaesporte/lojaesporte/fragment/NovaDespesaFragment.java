@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.lojaesporte.lojaesporte.R;
+import com.example.lojaesporte.lojaesporte.helper.Utils;
 import com.example.lojaesporte.lojaesporte.services.DespesaService;
 import com.example.lojaesporte.lojaesporte.helper.DateCustom;
 import com.example.lojaesporte.lojaesporte.helper.MaskEditUtil;
@@ -25,6 +26,7 @@ public class NovaDespesaFragment extends Fragment {
     private Button btnCadastrarDespesa;
     private EditText textDescricao,textCategoria,textData,textValor;
     private TextWatcher textWatcher;
+    private Utils utils = new Utils();
     public NovaDespesaFragment() {
         // Required empty public constructor
     }
@@ -49,17 +51,24 @@ public class NovaDespesaFragment extends Fragment {
         btnCadastrarDespesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Despesa despesa = new Despesa();
-                DespesaService despesaService = new DespesaService();
-                atribuiCampos(despesa);
 
-                if(despesaService.camposValidos(despesa)){
-                    despesaService.inserir(despesa);
-                    limpaCampos(despesa);
-                    Toast.makeText(getContext(),"Despesa cadastrada com sucesso!",Toast.LENGTH_SHORT).show();
+                if (utils.verificaConexao(getActivity())){
+                    Despesa despesa = new Despesa();
+                    DespesaService despesaService = new DespesaService();
+                    atribuiCampos(despesa);
+
+                    if(despesaService.camposValidos(despesa)){
+                        despesaService.inserir(despesa);
+                        limpaCampos(despesa);
+                        Toast.makeText(getContext(),"Despesa cadastrada com sucesso!",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getContext(),"Preencher todos os campo!",Toast.LENGTH_SHORT).show();
+                    }
                 }else {
-                    Toast.makeText(getContext(),"Preencher todos os campo!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Sem conexão com a internet!",Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
         return view;

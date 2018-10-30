@@ -1,7 +1,16 @@
 package com.example.lojaesporte.lojaesporte.helper;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import com.example.lojaesporte.lojaesporte.R;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -24,6 +33,31 @@ public class Utils {
             return 4;
         }
         return 0;
+    }
+
+    public static boolean isConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (null != activeNetwork && activeNetwork.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public  boolean verificaConexao(Context context) {
+        boolean conectado;
+        ConnectivityManager conectivtyManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (conectivtyManager.getActiveNetworkInfo() != null
+                && conectivtyManager.getActiveNetworkInfo().isAvailable()
+                && conectivtyManager.getActiveNetworkInfo().isConnected()) {
+            conectado = true;
+        } else {
+            conectado = false;
+        }
+        return conectado;
     }
 
     public static List<String> getAnosSpinner(String dataAtual){

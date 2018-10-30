@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.lojaesporte.lojaesporte.DAO.ProdutoDAO;
 import com.example.lojaesporte.lojaesporte.DAO.VendaDAO;
 import com.example.lojaesporte.lojaesporte.R;
+import com.example.lojaesporte.lojaesporte.helper.Utils;
 import com.example.lojaesporte.lojaesporte.services.VendaService;
 import com.example.lojaesporte.lojaesporte.adapter.AdapterProdutoVenda;
 import com.example.lojaesporte.lojaesporte.config.ConfiguracaoFirebase;
@@ -49,6 +50,7 @@ public class CaixaActivity extends AppCompatActivity {
     private DatabaseReference firebaseDatabase;
     private ProdutoDAO produtoDAO = new ProdutoDAO();
     private int posicao;
+    private Utils utils = new Utils();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,7 +173,12 @@ public class CaixaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuFinilizar:
+                if(utils.verificaConexao(getApplicationContext())){
                     insereVenda(produtosVenda,venda);
+                }else {
+                    Toast.makeText(getApplicationContext(),"Sem conexão com a internet!",Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
         return super.onOptionsItemSelected(item);

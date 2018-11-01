@@ -73,7 +73,7 @@ public class ResumoActivity extends AppCompatActivity {
     private ResumoDAO resumoDAO = new ResumoDAO();
     private int posicaoNavegationBotton;
     private List<PieEntry> entries = new ArrayList<>();
-
+    private List<VendaGrafico2> vendasAnualGraficos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +112,6 @@ public class ResumoActivity extends AppCompatActivity {
                            setResumoHojeVenda();
                            break;
                        case 2:
-                           //recuperaProdutosMensal();
                            setResumoMensalVenda();
 
                            break;
@@ -127,7 +126,6 @@ public class ResumoActivity extends AppCompatActivity {
     }
 
     private void recuperaProdutosMensal(){
-        //mesAnoSelecionado = Utils.getMesAtualSpinner(spinnerMes.getSelectedItem().toString()) + spinnerAno.getSelectedItem().toString();
         produtosVendasMensal = resumoDAO.recuperarProdutosVendaMensal(vendasMensal,mesAnoSelecionado);
     }
 
@@ -176,46 +174,17 @@ public class ResumoActivity extends AppCompatActivity {
                     case R.id.ic_ano:
                         posicaoNavegationBotton = 3;
                         if(spinnerProcurar.getSelectedItem().toString().equals("Vendas")){
-                           //mesAnoSelecionado = Utils.getMesAtualSpinner(spinnerMes.getSelectedItem().toString()) + spinnerAno.getSelectedItem().toString();
                             String ano = spinnerAno.getSelectedItem().toString();
-                            //entries = resumoService.getVendasAnualGrafico(ano);
-                            //configuraGraficoVendaAnual(entries);
-
-
-                            //vendasMensal.clear();
-                            //List<>
                             String meses[] = {"01","02","03","04","05","06","07","08","09","10","11","12"};
-                            List<VendaGrafico2> vendasAnualGraficos = new ArrayList<>();
                             List<String> mesAnos = new ArrayList<>();
-                            // final List<Venda> vendasMensal = new ArrayList<>();
                             for(String mes : meses) {
                                 String mesAno = mes + ano;
 
                                 mesAnos.add(mesAno);
-
-                                //recuperarVendasAnual(mesAno);
-
-                                //vendasMensal.addAll( resumoDAO.recuperarVendasMensal(mesAno));
-
-                                /*
-                                if(vendasMensal.size() == 0){
-
-                                }else {
-                                    double valorTotal = 0;
-                                    for (Venda venda : vendasMensal) {
-                                        valorTotal += venda.getValorTotal();
-
-                                    }
-                                    vendasAnualGraficos.add(new VendaGrafico2(Datas.getMesExtenso(mes), valorTotal));
-                                    //List<PieEntry> entries = new ArrayList<>();
-                                    entries = resumoService.getEntriesVendaAnual(vendasAnualGraficos);
-                                }
-                                */
-
-                                //Toast.makeText(getApplicationContext(),String.valueOf(vendasMensalAno.size()),Toast.LENGTH_SHORT).show();
                             }
-                            recuperarVendasAnual(mesAnos);
 
+                            vendasAnualGraficos.clear();
+                            recuperarVendasAnual(mesAnos);
                             }else {
 
                         }
@@ -227,7 +196,7 @@ public class ResumoActivity extends AppCompatActivity {
         });
     }
     public void getEntriesAnual(List<Venda> vendasM,String mes){
-        List<VendaGrafico2> vendasAnualGraficos = new ArrayList<>();
+
         if(vendasM.size() == 0){
             vendasAnualGraficos.add(new VendaGrafico2(Datas.getMesExtensoAnual(mes), 0));
         }else {
@@ -237,12 +206,10 @@ public class ResumoActivity extends AppCompatActivity {
 
             }
             vendasAnualGraficos.add(new VendaGrafico2(Datas.getMesExtensoAnual(mes), valorTotal));
-            //List<PieEntry> entries = new ArrayList<>();
             entries = resumoService.getEntriesVendaAnual(vendasAnualGraficos);
         }
     }
     public void recuperarVendasAnual(List<String> mesesAno){
-
         List<Venda> vendas = new ArrayList<>();
         DatabaseReference vendaRef = ConfiguracaoFirebase.getFirebaseDatabase();
 
@@ -266,7 +233,6 @@ public class ResumoActivity extends AppCompatActivity {
                 }
             });
         }
-        //return vendas;
     }
 
     @Override
@@ -290,9 +256,6 @@ public class ResumoActivity extends AppCompatActivity {
                             produtoVenda.setKey(dados.getKey());
                             produtosVendasHoje.add(produtoVenda);
                         }
-
-                        // prodtoTest = resumoService.getProdutosHoje(produtosVendasHoje);
-
                     }
 
                     @Override
@@ -301,8 +264,6 @@ public class ResumoActivity extends AppCompatActivity {
                     }
                 });
             }
-
-        //produtosVendidoHojeGrafico = resumoService.getProdutosHoje(produtosVendasHoje);
     }
 
     private boolean recuperarVendas(){
@@ -336,7 +297,6 @@ public class ResumoActivity extends AppCompatActivity {
         configuraGraficoVendaHoje(produtosVendidoHojeGrafico);
     }
     private void setResumoMensalVenda(){
-        //produtosVendasMensal.clear();
         List<ProdutoVenda> produtoVendasMensalGrafico = new ArrayList<>();
         produtoVendasMensalGrafico = resumoService.getProdutosGrafico(produtosVendasMensal);
         configuraGraficoVendaMensal(produtoVendasMensalGrafico);
@@ -377,13 +337,15 @@ public class ResumoActivity extends AppCompatActivity {
 
     public void configuraGraficoVendaAnual(List<PieEntry> entries){
         textoTituloGrafico.setText("Valor da renda nos meses!");
-        /*
-        List<PieEntry> entries;
 
-        entries = entriesG;
-        */
+        List<PieEntry> entriesPie = new ArrayList<>();
+        for(PieEntry entry : entries){
+            if(entry.getY() != 0){
+                entriesPie.add(entry);
+            }
+        }
 
-        PieDataSet dataSet = new PieDataSet(entries, ""); // add entries to dataset
+        PieDataSet dataSet = new PieDataSet(entriesPie, ""); // add entries to dataset
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         dataSet.setValueTextColor(R.color.colorPrimary);
 

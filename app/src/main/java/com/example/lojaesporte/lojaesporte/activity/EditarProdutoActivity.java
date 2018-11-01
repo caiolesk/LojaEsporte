@@ -68,6 +68,12 @@ public class EditarProdutoActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return false;
+    }
+
     public void atribuiCampos(Produto produto){
         produto.setCategoria(textCategoria.getText().toString());
         produto.setDescricao(textDescricao.getText().toString());

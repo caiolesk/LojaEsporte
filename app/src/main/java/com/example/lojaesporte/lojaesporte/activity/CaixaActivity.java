@@ -148,11 +148,15 @@ public class CaixaActivity extends AppCompatActivity {
                 if(resultCode == RESULT_OK){
                     if(params != null){
                         produto = (ProdutoVenda) params.getSerializable("produtoSelecionadoCarrinho");
-                        adicionaProdutoCarrinho(produto);
-                        if(textValorTotal.getText().toString().isEmpty()){
-                            atribuiValorTotal(produto,Double.valueOf(0));
+                        if(vendaService.validaProdutoRepitido(produtosVenda,produto)){
+                            adicionaProdutoCarrinho(produto);
+                            if(textValorTotal.getText().toString().isEmpty()){
+                                atribuiValorTotal(produto,Double.valueOf(0));
+                            }else {
+                                atribuiValorTotal(produto, Double.valueOf(textValorTotal.getText().toString()));
+                            }
                         }else {
-                            atribuiValorTotal(produto, Double.valueOf(textValorTotal.getText().toString()));
+                            Toast.makeText(getApplicationContext(),"Este produto já foi adicionado no carrinho",Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -210,7 +214,7 @@ public class CaixaActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Necessário um item no carrinho!", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(getApplicationContext(), "Campos invalidos!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Campos vazios ou invalidos!", Toast.LENGTH_SHORT).show();
             }
     }
 

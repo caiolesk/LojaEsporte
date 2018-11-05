@@ -55,5 +55,15 @@ public class VendaService {
         return venda.getKey() != null;
     }
 
+    public boolean validaProdutoRepitido(List<ProdutoVenda> produtos, ProdutoVenda produto){
+        if(produtos.size() != 0){
+            for(ProdutoVenda p : produtos){
+                if(p.getKey().equals(produto.getKey())){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 }

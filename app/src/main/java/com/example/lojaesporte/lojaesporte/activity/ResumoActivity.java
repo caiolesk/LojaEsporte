@@ -164,7 +164,8 @@ public class ResumoActivity extends AppCompatActivity {
                         posicaoNavegationBotton = 2;
                         if(spinnerProcurar.getSelectedItem().toString().equals("Vendas")){
                             mesAnoSelecionado = Utils.getMesAtualSpinner(spinnerMes.getSelectedItem().toString()) + spinnerAno.getSelectedItem().toString();
-                            vendasMensal.addAll( resumoDAO.recuperarVendasMensal(mesAnoSelecionado));
+                            //vendasMensal.addAll( resumoDAO.recuperarVendasMensal(mesAnoSelecionado));
+                            recuperarVendasDoMes();
                             recuperaProdutosMensal();
 
                         }else {
@@ -280,6 +281,29 @@ public class ResumoActivity extends AppCompatActivity {
                     vendasMensal.add( venda );
                 }
                 recuperarProdutosVendaHoje();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        return true;
+    }
+    private boolean recuperarVendasDoMes(){
+        mesAnoSelecionado = Utils.getMesAtualSpinner(spinnerMes.getSelectedItem().toString()) + spinnerAno.getSelectedItem().toString();
+        vendaRef = firebaseRef.child("venda").child(mesAnoSelecionado);
+        valueEventListenerVenda = vendaRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                vendasMensal.clear();
+                for (DataSnapshot dados: dataSnapshot.getChildren()){
+
+                    Venda venda = dados.getValue( Venda.class );
+                    venda.setKey(dados.getKey());
+                    vendasMensal.add( venda );
+                }
             }
 
             @Override

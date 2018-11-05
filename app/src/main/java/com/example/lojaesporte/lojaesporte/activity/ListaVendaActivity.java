@@ -72,7 +72,7 @@ public class ListaVendaActivity extends AppCompatActivity {
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                       // abreVenda();
+
                     }
 
                     @Override
@@ -81,11 +81,10 @@ public class ListaVendaActivity extends AppCompatActivity {
                         if(!listaBuscaVendas.isEmpty()){
                             vendaSelecionada = listaBuscaVendas.get(position);
                             posicao = position;
-                            //Toast.makeText(getApplicationContext(),"Venda selecionada!",Toast.LENGTH_SHORT).show();
+
                         }else {
                             vendaSelecionada = vendas.get(position);
                             posicao = position;
-                            //Toast.makeText(getApplicationContext(), "Venda selecionada!", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -178,7 +177,7 @@ public class ListaVendaActivity extends AppCompatActivity {
             startActivity(intent);
             vendaSelecionada.setKey(null);
         }else{
-            Toast.makeText(getApplicationContext(),"Venda não selecionado!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Venda não selecionada!",Toast.LENGTH_SHORT).show();
         }
     }
     public void recuperarVendas(){

@@ -39,7 +39,6 @@ public class AdapterDespesa extends RecyclerView.Adapter<AdapterDespesa.MyViewHo
         holder.categoria.setText(despesa.getCategoria());
         holder.data.setText(String.valueOf(despesa.getData()));
 
-        //holder.cardView.setBackgroundColor(Color.RED);
     }
 
 

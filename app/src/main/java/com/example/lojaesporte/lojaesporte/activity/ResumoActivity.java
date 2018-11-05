@@ -336,7 +336,7 @@ public class ResumoActivity extends AppCompatActivity {
     }
 
     public void configuraGraficoVendaAnual(List<PieEntry> entries){
-        textoTituloGrafico.setText("Valor da renda nos meses!");
+        textoTituloGrafico.setText("Valor da renda mensal no ano!");
 
         List<PieEntry> entriesPie = new ArrayList<>();
         for(PieEntry entry : entries){

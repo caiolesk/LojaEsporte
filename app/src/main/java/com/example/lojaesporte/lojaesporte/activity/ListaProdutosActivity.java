@@ -154,17 +154,6 @@ public class ListaProdutosActivity extends AppCompatActivity {
         }
     }
 
-    /*
-        public void recuperaProdutoCarrinho(){
-            Bundle bundle = getIntent().getExtras();
-            if(bundle != null) {
-                produtoSelecionadoVenda = (Produto) bundle.getSerializable("produtoSelecionado");
-            }
-            if(produtoSelecionadoVenda != null) {
-                this.produtoSelecionadoVenda.add(produtoVenda);
-            }
-        }
-        */
     public void recuperarProdutos(){
 
         produtoRef = firebaseRef.child("produto");

@@ -45,7 +45,7 @@ public class EditarProdutoActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Produto alterado com sucesso!",Toast.LENGTH_SHORT).show();
                     finish();
                 }else {
-                    Toast.makeText(getApplicationContext(),"Preencher todos os campo!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Preencher todos os campos!",Toast.LENGTH_SHORT).show();
                 }
             }
         });

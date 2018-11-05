@@ -62,7 +62,7 @@ public class NovaDespesaFragment extends Fragment {
                         limpaCampos(despesa);
                         Toast.makeText(getContext(),"Despesa cadastrada com sucesso!",Toast.LENGTH_SHORT).show();
                     }else {
-                        Toast.makeText(getContext(),"Preencher todos os campo!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"Preencher todos os campos!",Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(getContext(),"Sem conexão com a internet!",Toast.LENGTH_SHORT).show();

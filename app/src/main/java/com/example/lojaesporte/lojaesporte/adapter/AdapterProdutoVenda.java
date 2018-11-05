@@ -47,10 +47,6 @@ public class AdapterProdutoVenda extends RecyclerView.Adapter<AdapterProdutoVend
         holder.quantidade.setText(String.valueOf(produto.getQuantidade()));
         holder.desconto.setText(String.valueOf(produto.getDesconto()));
 
-       //holder.cardView.setBackgroundColor(Color.RED);
-
-
-
     }
 
     @Override

@@ -14,6 +14,7 @@ import com.example.lojaesporte.lojaesporte.DAO.VendaDAO;
 import com.example.lojaesporte.lojaesporte.R;
 import com.example.lojaesporte.lojaesporte.model.Produto;
 import com.example.lojaesporte.lojaesporte.model.ProdutoVenda;
+import com.example.lojaesporte.lojaesporte.services.VendaService;
 
 import java.math.BigDecimal;
 
@@ -86,8 +87,8 @@ public class FinalizaSelecaoProdutoActivity extends AppCompatActivity {
     }
 
     public void selecaoProduto(){
-        Intent intent = new Intent();
-
+            Intent intent = new Intent();
+            VendaService vendaService = new VendaService();
             produtoVenda.setKey(produtoSelecionado.getKey());
             produtoVenda.setCategoria(textCategoria.getText().toString());
             produtoVenda.setDescricao(textDescricao.getText().toString());
@@ -100,10 +101,14 @@ public class FinalizaSelecaoProdutoActivity extends AppCompatActivity {
             produtoVenda.setPreco(vendaDAO.calculaPrecoDesconto(new BigDecimal(textPreco.getText().toString()),new BigDecimal(produtoVenda.getDesconto())));
 
             if(produtoDAO.validaQuantidade(produtoVenda)){
-                intent.putExtra("produtoSelecionadoVenda",produtoVenda);
+                if(vendaService.validaDescontoProduto(produtoVenda.getDesconto())) {
+                    intent.putExtra("produtoSelecionadoVenda", produtoVenda);
 
-                setResult(1, intent);
-                finish();
+                    setResult(1, intent);
+                    finish();
+                }else {
+                    Toast.makeText(getApplicationContext(),"Desconto inválido!",Toast.LENGTH_SHORT).show();
+                }
             }else {
                 Toast.makeText(getApplicationContext(),"Quantidade invalida!",Toast.LENGTH_SHORT).show();
             }

@@ -66,4 +66,7 @@ public class VendaService {
         return true;
     }
 
+    public boolean validaDescontoProduto(Double desconto){
+        return desconto <=100;
+    }
 }

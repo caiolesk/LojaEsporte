@@ -81,15 +81,11 @@ public class ListaProdutosActivity extends AppCompatActivity {
 
                                     produtoSelecionado = listaProdutosBusca.get(position);
                                     posicao = position;
-                                    //cardView.setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
-                                    // recyclerView.
-                                    //Toast.makeText(getApplicationContext(),"Produto selecionado " + produtoSelecionado.getDescricao(),Toast.LENGTH_SHORT).show();
+
                                 }else {
                                     produtoSelecionado = produtos.get(position);
                                     posicao = position;
-                                    //cardView.setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
-                                    // recyclerView.
-                                    //Toast.makeText(getApplicationContext(),"Produto selecionado " + produtoSelecionado.getDescricao(),Toast.LENGTH_SHORT).show();
+
                                 }
 
                             }
